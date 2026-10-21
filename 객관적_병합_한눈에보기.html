@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>객관적 병합 한눈에 보기</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --line: #dfe3ea;
+    --head: #111827;
+    --accent: #334155;
+    --soft: #eef2f7;
+    --warn: #fff7ed;
+    --good: #f0fdf4;
+    --blue: #eff6ff;
+    --purple: #faf5ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px;
+    font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; }
+  .title {
+    margin-bottom: 18px;
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 20px;
+  }
+  .badge {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .table-wrap {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: auto;
+    box-shadow: 0 10px 30px rgba(17,24,39,.06);
+  }
+  table {
+    width: 100%;
+    min-width: 1180px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 14px 14px;
+    vertical-align: top;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  th:last-child, td:last-child { border-right: none; }
+  tr:last-child td { border-bottom: none; }
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    color: #fff;
+    background: var(--head);
+    text-align: center;
+    font-size: 14px;
+  }
+  thead th:first-child { text-align: left; }
+  tbody td:first-child {
+    width: 150px;
+    font-weight: 800;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+  .simple { background: #fbfdff; }
+  .selective { background: var(--blue); }
+  .preliminary { background: var(--warn); }
+  .improper { background: var(--purple); }
+  .yes { font-weight: 800; color: #166534; }
+  .no { font-weight: 800; color: #991b1b; }
+  .key { font-weight: 800; color: #111827; }
+  .small { color: var(--muted); font-size: 12px; }
+  .callout {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+  }
+  .card p { margin: 0; font-size: 13px; }
+  .formula {
+    margin-top: 18px;
+    padding: 15px 16px;
+    border-radius: 14px;
+    background: #111827;
+    color: #f9fafb;
+    font-size: 14px;
+  }
+  .formula strong { color: #fde68a; }
+  @media (max-width: 900px) {
+    body { padding: 16px; }
+    .callout { grid-template-columns: 1fr 1fr; }
+  }
+  @media print {
+    body { background: #fff; padding: 8mm; }
+    .table-wrap { box-shadow: none; }
+    thead th { position: static; }
+    .callout { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">
+    <h1>객관적 병합 한눈에 보기</h1>
+    <div class="subtitle">민사소송법 · 단순병합 / 선택적 병합 / 예비적 병합 / 부진정 예비적 병합 비교표</div>
+  </div>
+
+  <div class="legend">
+    <span class="badge">핵심축 ① 청구의 양립 가능성</span>
+    <span class="badge">핵심축 ② 심판 순서의 유무</span>
+    <span class="badge">핵심축 ③ 일부판결 가능 여부</span>
+    <span class="badge">핵심축 ④ 판단누락·상소 효과</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>객관적 병합 일반</th>
+          <th>단순병합</th>
+          <th>선택적 병합</th>
+          <th>예비적 병합</th>
+          <th>부진정 예비적 병합</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>의의</td>
+          <td>하나의 소로써 <span class="key">수 개의 청구</span>를 병합하여 제기</td>
+          <td class="simple">심판 순위를 붙이지 않고 <span class="key">모든 청구의 심판</span>을 구함</td>
+          <td class="selective">여러 청구 중 <span class="key">어느 하나의 인용</span>을 목적으로 택일적으로 청구</td>
+          <td class="preliminary"><span class="key">주위적 청구가 인용되지 않을 경우</span>에 대비하여 예비적 청구의 심판을 구함</td>
+          <td class="improper">실질적으로 양립 가능한 청구에 <span class="key">당사자가 심판 순위</span>를 붙인 형태</td>
+        </tr>
+
+        <tr>
+          <td>청구의 양립성</td>
+          <td>병합 유형에 따라 달라짐</td>
+          <td class="simple"><span class="yes">양립 가능</span></td>
+          <td class="selective"><span class="yes">양립 가능</span><br><span class="small">양립 불가능한 청구의 선택적 병합은 처분권주의에 반함</span></td>
+          <td class="preliminary"><span class="no">양립 불가능</span></td>
+          <td class="improper"><span class="yes">양립 가능</span></td>
+        </tr>
+
+        <tr>
+          <td>심판 순서</td>
+          <td>유형별 상이</td>
+          <td class="simple"><span class="no">없음</span></td>
+          <td class="selective"><span class="no">원칙적으로 없음</span><br><span class="small">법원이 이유 있는 청구 중 임의 선택 가능</span></td>
+          <td class="preliminary"><span class="yes">있음</span><br>주위적 → 예비적</td>
+          <td class="improper"><span class="yes">있음</span><br><span class="small">당사자가 붙인 순서에 구속</span></td>
+        </tr>
+
+        <tr>
+          <td>논리적 관련성</td>
+          <td>일반요건은 아님</td>
+          <td class="simple"><span class="no">불필요</span></td>
+          <td class="selective"><span class="yes">필요</span><br><span class="small">동일 목적을 위한 청구권·형성권의 경합</span></td>
+          <td class="preliminary"><span class="yes">필요</span><br><span class="small">법률적·경제적으로 동일 목적</span></td>
+          <td class="improper"><span class="yes">필요</span><br><span class="small">밀접한 논리적 관계 + 순위를 붙일 합리적 필요</span></td>
+        </tr>
+
+        <tr>
+          <td>변론 분리</td>
+          <td>-</td>
+          <td class="simple"><span class="yes">가능</span></td>
+          <td class="selective"><span class="no">불가능</span></td>
+          <td class="preliminary"><span class="no">불가능</span></td>
+          <td class="improper"><span class="no">원칙적으로 불가능</span></td>
+        </tr>
+
+        <tr>
+          <td>일부판결</td>
+          <td>-</td>
+          <td class="simple"><span class="yes">가능</span><br>제200조</td>
+          <td class="selective"><span class="no">불가능</span><br><span class="small">불가분적으로 결합</span></td>
+          <td class="preliminary"><span class="no">불가능</span><br><span class="small">불가분적으로 결합</span></td>
+          <td class="improper"><span class="no">불가능</span><br><span class="small">진정 예비적 병합과 동일한 법리</span></td>
+        </tr>
+
+        <tr>
+          <td>원고 승소 시</td>
+          <td>-</td>
+          <td class="simple">각 청구별로 각각 판단</td>
+          <td class="selective">이유 있는 청구 중 <span class="key">하나를 인용</span>하면 족함<br><span class="small">나머지는 심판 불요</span></td>
+          <td class="preliminary">주위적 청구 인용 → <span class="key">예비적 청구 심판 불요</span></td>
+          <td class="improper">
+            <span class="key">선택적 성질</span>: 제1차 청구 인용 시 제2차 심판 불요<br>
+            <span class="key">단순병합 성질</span>: 모든 청구 판단 필요
+          </td>
+        </tr>
+
+        <tr>
+          <td>원고 패소 시</td>
+          <td>-</td>
+          <td class="simple">각 청구별 기각 판단</td>
+          <td class="selective"><span class="key">모든 청구를 배척</span>해야 함</td>
+          <td class="preliminary">주위적 청구 기각·각하 후 <span class="key">예비적 청구 심판</span></td>
+          <td class="improper">붙인 순서 및 실질적 성질에 따라 판단</td>
+        </tr>
+
+        <tr>
+          <td>판단 누락</td>
+          <td>-</td>
+          <td class="simple"><span class="key">재판의 누락</span> 제212조 1항<br>누락 부분은 제1심에 계속 → <span class="key">추가판결</span></td>
+          <td class="selective">재판의 누락 아님<br><span class="key">위법한 전부판결</span> → 전체가 상소심으로 이심</td>
+          <td class="preliminary">재판의 누락 아님<br><span class="key">위법한 전부판결</span> → 전체가 상소심으로 이심</td>
+          <td class="improper">진정 예비적 병합과 동일<br><span class="key">전체 이심</span></td>
+        </tr>
+
+        <tr>
+          <td>상소의 효력</td>
+          <td>-</td>
+          <td class="simple">
+            일부 상소라도 <span class="key">상소불가분의 원칙</span>에 따라 전부이심·확정차단<br>
+            다만 <span class="key">불이익변경금지</span>에 따라 불복 범위가 심판대상
+          </td>
+          <td class="selective">
+            피고가 하나의 인용 청구에 항소해도 <span class="key">판단되지 않은 청구까지 전부 이심</span><br>
+            항소심은 임의 선택하여 심판 가능
+          </td>
+          <td class="preliminary">
+            주위적 청구 인용에 피고 항소 → <span class="key">예비적 청구도 함께 이심</span><br>
+            주위적 청구 배척 시 예비적 청구 심판
+          </td>
+          <td class="improper">
+            일부판결 불허 및 <span class="key">전부이심</span> 법리가 적용됨
+          </td>
+        </tr>
+
+        <tr>
+          <td>소가 산정</td>
+          <td>
+            <span class="key">단순병합</span>: 합산의 원칙(제27조 1항)<br>
+            <span class="key">선택적·예비적·중복청구</span>: 중복청구 흡수 → 가장 다액
+          </td>
+          <td class="simple"><span class="key">각 청구가액 합산</span></td>
+          <td class="selective"><span class="key">가장 다액인 청구가액</span></td>
+          <td class="preliminary"><span class="key">가장 다액인 청구가액</span></td>
+          <td class="improper">실질에 따라 판단<br><span class="small">동일 경제적 이익이면 중복청구 흡수 법리</span></td>
+        </tr>
+
+        <tr>
+          <td>대표 예시</td>
+          <td>수 개의 청구를 하나의 소에서 병합</td>
+          <td class="simple">소유권확인 + 건물인도<br>원금 + 이자</td>
+          <td class="selective">동일 목적을 위한 수 개 청구권의 경합</td>
+          <td class="preliminary">주위적 계약상 청구 / 예비적 부당이득 등<br><span class="small">단, 실제 양립 불가능 관계여야 함</span></td>
+          <td class="improper">
+            불법행위 손해배상 / 채무불이행 손해배상 등<br>
+            <span class="small">2025다213846도 부진정 예비적 병합 논점</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="formula">
+    <strong>암기 공식:</strong>
+    단순 = “다 판단” · 선택 = “아무거나 하나 인용” · 예비 = “순서대로” · 부진정 예비 = “양립 가능한데 순서를 붙임”
+  </div>
+
+  <div class="callout">
+    <div class="card">
+      <h3>① 일반요건</h3>
+      <p><strong>동종의 소송절차</strong>(제253조) + <strong>공통의 관할</strong>(제25조 1항). 전속관할이 섞이면 주의.</p>
+    </div>
+    <div class="card">
+      <h3>② 일부판결 기준</h3>
+      <p><strong>단순병합만 가능.</strong> 선택적·예비적·부진정 예비적 병합은 불가분적 결합이라 일부판결 불허.</p>
+    </div>
+    <div class="card">
+      <h3>③ 판단누락 기준</h3>
+      <p><strong>단순병합</strong>은 재판의 누락 → 추가판결. 그 외는 위법한 전부판결 → 전체 이심.</p>
+    </div>
+    <div class="card">
+      <h3>④ 시험 함정</h3>
+      <p><strong>“주위·예비”라는 명칭보다 실질</strong>을 본다. 양립 가능한 청구에 순위만 붙였으면 부진정 예비적 병합 문제.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
